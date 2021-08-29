@@ -1,5 +1,5 @@
-declare-option -hidden str im_default_im "com.apple.keylayout.UnicodeHexInput"
-declare-option -hidden str im_selector_path "/usr/local/bin/im-select"
+declare-option str im_default_im "com.apple.keylayout.UnicodeHexInput"
+declare-option str im_selector_path "/usr/local/bin/im-select"
 
 define-command -docstring 'select IM' -params 1 im-select %{
     nop %sh{
@@ -7,6 +7,6 @@ define-command -docstring 'select IM' -params 1 im-select %{
     }
 }
 
-hook buffer ModeChange .*:normal %{
+hook global ModeChange input:.* %{
     im-select "%opt{im_default_im}"
 }
