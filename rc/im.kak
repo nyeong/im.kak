@@ -7,6 +7,6 @@ define-command -docstring 'select IM' -params 1 im-select %{
     }
 }
 
-hook global ModeChange input:.* %{
+hook global ModeChange .*:normal %{
     im-select "%opt{im_default_im}"
 }
